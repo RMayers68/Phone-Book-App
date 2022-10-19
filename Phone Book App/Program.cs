@@ -53,7 +53,8 @@ namespace Phone_Book_App
                         db.SaveChanges();
                         break;
                     case 4:                             //View
-                        View(db);
+                        List<Contact> viewList = View(db);
+                        if (viewList.Count < 1) break;
                         Console.WriteLine("Press any key to continue...");
                         Console.ReadKey();
                         break;
