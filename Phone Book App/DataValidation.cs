@@ -20,5 +20,19 @@
             }
             return a;
         }
+
+        public static Contact IDVerification(List<Contact> list)
+        {
+            while(true)
+            {
+                int x;
+                while (!Int32.TryParse(Console.ReadLine(), out x))
+                    Console.WriteLine("Invalid input, enter again:");
+                foreach (var contact in list)
+                    if (contact.Id == x)
+                        return contact;
+                Console.WriteLine("ID was not found in database");
+            }          
+        }
     }
 }
