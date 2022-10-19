@@ -6,9 +6,8 @@
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
 
-        public Contact(int id, string name, string phoneNumber)
+        public Contact(string name, string phoneNumber)
         {
-            Id = id;
             Name = name;
             PhoneNumber = phoneNumber;
         }   
