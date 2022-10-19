@@ -34,6 +34,7 @@ namespace Phone_Book_App
                         break;
                     case 2:                             // Delete
                         List<Contact> deleteList = View(db);
+                        if (deleteList.Count < 1) break;
                         Console.WriteLine("Please enter the ID of the entry you would like to delete:");
                         Contact deleteContact = DataValidation.IDVerification(deleteList);
                         db.Remove(deleteContact);
@@ -41,6 +42,7 @@ namespace Phone_Book_App
                         break;
                     case 3:                             //Update
                         List<Contact> updateList = View(db);
+                        if (updateList.Count < 1) break;
                         Console.WriteLine("Please enter the ID of the entry you would like to update:");
                         Contact updateContact = DataValidation.IDVerification(updateList);
                         Console.WriteLine("What is the name of the person/organization?");
