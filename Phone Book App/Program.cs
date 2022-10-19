@@ -7,7 +7,7 @@ namespace Phone_Book_App
         static void Main(string[] args)
         {
             bool closeProgram = false;
-            string[] menu = { "Phone Book", "1: Add a Phone #", "2: Delete a Phone #", "3: Update an existing Phone #", "4: View your Contacts","0: Exit" };
+            string[] menu = { "Phone Book", "1: Add a Phone #", "2: Delete a Phone #", "3: Update an existing Phone #", "4: View your Contacts", "0: Exit" };
             List<string> menuList = new(menu);
             int menuChoice = 0;
             using var db = new ContactContext();
@@ -19,7 +19,7 @@ namespace Phone_Book_App
                 ConsoleTableBuilder.From(menuList).ExportAndWriteLine(TableAligntment.Center);
                 menuChoice = DataValidation.CountCheck(4, 0);
                 Console.Clear();
-                switch(menuChoice)
+                switch (menuChoice)
                 {
                     default:                            // Exit Program
                         closeProgram = true;
@@ -29,7 +29,7 @@ namespace Phone_Book_App
                         name = DataValidation.EmptyStringCheck();
                         Console.WriteLine("And what is their phone number?");
                         number = DataValidation.EmptyStringCheck();
-                        db.Add(new Contact (name,number));
+                        db.Add(new Contact(name, number));
                         db.SaveChanges();
                         break;
                     case 2:                             // Delete
@@ -54,9 +54,9 @@ namespace Phone_Book_App
                         View(db);
                         Console.WriteLine("Press any key to continue...");
                         Console.ReadKey();
-                        break;      
+                        break;
                 }
-            }   
+            }
         }
 
         // View DB EF method
@@ -67,12 +67,10 @@ namespace Phone_Book_App
                         select b;
             List<Contact> list = new();
             foreach (var item in query)
-                list.Add(item);    
+                list.Add(item);
             ConsoleTableBuilder.From(list).ExportAndWriteLine(TableAligntment.Center);
             return list;
         }
-
-        // Reset auto increment
     }
 }
 
